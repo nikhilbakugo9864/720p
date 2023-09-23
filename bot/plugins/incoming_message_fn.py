@@ -1,4 +1,5 @@
 import datetime
+import anitopy
 import logging
 logging.basicConfig(
     level=logging.DEBUG,
@@ -224,6 +225,11 @@ async def incoming_compress_message_f(update):
         )
       )
       saved_file_path = video
+      anitopy_options = {'allowed_delimiters': ' '}
+      new_name = anitopy.parse(nam)
+      anime_name = new_name['anime_title']
+      episode_no = new_name['episode_number']  
+      joined_string = f"[{anime_name}] [Episode {episode_no}] [@Anime_Compass!🧭.mkv]"
       LOGGER.info(saved_file_path)  
       LOGGER.info(video)
       if( video is None ):
